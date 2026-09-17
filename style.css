@@ -1,0 +1,388 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:wght@400;700&display=swap');
+
+:root {
+  --bg: #0d0c0a;
+  --bg-panel: #17140f;
+  --paper: #e8e0c9;
+  --paper-dark: #d8cba8;
+  --ink: #1a1712;
+  --red: #a4231b;
+  --red-bright: #c8321f;
+  --line: #4a4436;
+  --muted: #8a8368;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--paper);
+  font-family: 'Courier Prime', 'Courier New', monospace;
+  min-height: 100vh;
+}
+
+body {
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(164,35,27,0.06), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(164,35,27,0.05), transparent 45%);
+}
+
+::selection { background: var(--red); color: var(--paper); }
+
+/* ---------- Gate (password) screen ---------- */
+#gate {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 24px;
+  padding: 20px;
+  text-align: center;
+}
+
+#gate .stamp {
+  font-family: 'Special Elite', cursive;
+  color: var(--red-bright);
+  border: 4px solid var(--red-bright);
+  padding: 10px 24px;
+  transform: rotate(-6deg);
+  letter-spacing: 4px;
+  font-size: 1.4rem;
+  opacity: 0.9;
+}
+
+#gate h1 {
+  font-family: 'Special Elite', cursive;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  letter-spacing: 6px;
+  margin: 0;
+  color: var(--paper);
+}
+
+#gate p.sub {
+  color: var(--muted);
+  margin: 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+#gate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+#gate-form input {
+  background: var(--paper);
+  color: var(--ink);
+  border: none;
+  padding: 14px 18px;
+  font-family: 'Courier Prime', monospace;
+  font-size: 1rem;
+  width: 280px;
+  max-width: 80vw;
+  text-align: center;
+  letter-spacing: 3px;
+  outline: 2px solid transparent;
+}
+
+#gate-form input:focus { outline: 2px solid var(--red-bright); }
+
+#gate-form button {
+  background: var(--red);
+  color: var(--paper);
+  border: none;
+  padding: 12px 28px;
+  font-family: 'Special Elite', cursive;
+  letter-spacing: 3px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+#gate-form button:hover { background: var(--red-bright); }
+
+#gate-error {
+  color: var(--red-bright);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  min-height: 1.2em;
+}
+
+/* ---------- Main site ---------- */
+#site { display: none; min-height: 100vh; }
+#site.visible { display: block; }
+
+header.masthead {
+  border-bottom: 3px double var(--line);
+  padding: 28px 20px 18px;
+  text-align: center;
+  position: relative;
+}
+
+header.masthead .eyebrow {
+  color: var(--red-bright);
+  letter-spacing: 4px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+header.masthead h1 {
+  font-family: 'Special Elite', cursive;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  margin: 0;
+  letter-spacing: 4px;
+}
+
+header.masthead .tagline {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 8px;
+  letter-spacing: 1px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px 20px 80px;
+}
+
+#search-wrap {
+  margin-bottom: 34px;
+}
+
+#search {
+  width: 100%;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  color: var(--paper);
+  padding: 16px 20px;
+  font-family: 'Courier Prime', monospace;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+#search::placeholder { color: var(--muted); }
+#search:focus { outline: 1px solid var(--red-bright); }
+
+#result-count {
+  color: var(--muted);
+  font-size: 0.75rem;
+  margin-top: 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ---------- File grid / cards ---------- */
+#grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.file-card {
+  background: var(--paper);
+  color: var(--ink);
+  padding: 20px;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid #00000022;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.35);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 170px;
+}
+
+.file-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.4);
+}
+
+.file-card .case-no {
+  font-family: 'Special Elite', cursive;
+  font-size: 0.7rem;
+  color: var(--red);
+  letter-spacing: 2px;
+}
+
+.file-card h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-family: 'Special Elite', cursive;
+  letter-spacing: 1px;
+}
+
+.file-card .meta {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #55503f;
+}
+
+.file-card .summary {
+  font-size: 0.85rem;
+  color: #33302a;
+  line-height: 1.4;
+  flex-grow: 1;
+}
+
+.file-card .lock-badge {
+  align-self: flex-start;
+  background: var(--red);
+  color: var(--paper);
+  font-size: 0.65rem;
+  padding: 3px 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+#empty-state {
+  text-align: center;
+  color: var(--muted);
+  padding: 60px 20px;
+  display: none;
+  letter-spacing: 1px;
+}
+
+/* ---------- File detail modal ---------- */
+#overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 50;
+  padding: 30px 16px;
+  overflow-y: auto;
+}
+
+#overlay.visible { display: block; }
+
+.file-detail {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 36px 32px 40px;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+.file-detail .close-btn {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: var(--ink);
+  font-family: 'Courier Prime', monospace;
+}
+
+.file-detail .case-no {
+  font-family: 'Special Elite', cursive;
+  color: var(--red);
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+}
+
+.file-detail h2 {
+  font-family: 'Special Elite', cursive;
+  margin: 6px 0 4px;
+  font-size: 1.6rem;
+}
+
+.file-detail .meta-row {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #55503f;
+  border-bottom: 2px solid #00000022;
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+}
+
+.file-detail .content p {
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin: 0 0 14px;
+}
+
+.file-detail .photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.file-detail .photos img {
+  width: 100%;
+  display: block;
+  border: 1px solid #00000033;
+}
+
+.file-detail .no-photos {
+  font-size: 0.8rem;
+  color: #6b654f;
+  font-style: italic;
+  margin-top: 18px;
+}
+
+/* ---------- Per-file lock screen (inside modal) ---------- */
+.file-lock {
+  text-align: center;
+  padding: 30px 10px 10px;
+}
+
+.file-lock p {
+  color: #55503f;
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+}
+
+.file-lock input {
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 10px 14px;
+  font-family: 'Courier Prime', monospace;
+  width: 220px;
+  max-width: 70vw;
+  text-align: center;
+}
+
+.file-lock button {
+  background: var(--red);
+  color: var(--paper);
+  border: none;
+  padding: 10px 22px;
+  margin-left: 8px;
+  font-family: 'Special Elite', cursive;
+  cursor: pointer;
+}
+
+.file-lock .err {
+  color: var(--red-bright);
+  font-size: 0.8rem;
+  margin-top: 10px;
+  min-height: 1.2em;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  padding: 30px 20px 50px;
+}

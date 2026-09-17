@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE DK FILES</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Password gate -->
+  <div id="gate">
+    <div class="stamp">CLASSIFIED</div>
+    <h1>THE DK FILES</h1>
+    <p class="sub">Authorized Personnel Only</p>
+    <form id="gate-form">
+      <input type="password" id="gate-password" placeholder="Enter Password" autocomplete="off" autofocus />
+      <button type="submit">Access Files</button>
+    </form>
+    <div id="gate-error"></div>
+  </div>
+
+  <!-- Main site -->
+  <div id="site">
+    <header class="masthead">
+      <div class="eyebrow">Declassified Archive</div>
+      <h1>THE DK FILES</h1>
+      <p class="tagline">The Complete Case History of Dory Kawauchi</p>
+    </header>
+
+    <div class="container">
+      <div id="search-wrap">
+        <input type="text" id="search" placeholder="Search the files… (e.g. &quot;car&quot;, &quot;vehicular&quot;)" />
+        <div id="result-count"></div>
+      </div>
+
+      <div id="grid"></div>
+      <div id="empty-state">No matching files found. The archive is not exhaustive.</div>
+    </div>
+
+    <footer>THE DK FILES &mdash; a completely unofficial, entirely affectionate archive.</footer>
+  </div>
+
+  <!-- File detail overlay -->
+  <div id="overlay">
+    <div id="overlay-content"></div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
